@@ -1,0 +1,31 @@
+{
+  "name": "d3hg",
+  "version": "1.0.0",
+  "description": "Helper for creating handcrafted graphs on top of d3.js.",
+  "keywords": [
+    "visualization",
+    "svg"
+  ],
+  "homepage": "http://ento.github.com/d3hg",
+  "author": {
+    "name": "Marica Odagaki"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ento/d3hg.git"
+  },
+  "dependencies": {
+    "d3": "2.8.x"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.2.0",
+    "uglify-js": ">=1.2.3",
+    "mocha": "1.0.x",
+    "should": "0.6.x",
+    "jsdom": "0.2.12",
+    "sizzle": "1.1.x"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  }
+}

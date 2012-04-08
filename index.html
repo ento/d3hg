@@ -1,0 +1,116 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>d3hg example</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js"></script>
+    <script type="text/javascript" src="d3hg.js"></script>
+    <script type="text/javascript" src="d3hg.icons.js"></script>
+    <style type="text/css">
+text {
+    font-size: 12;
+    font-family: sans-serif;
+    fill: #444;
+}
+.link {
+    stroke: #666;
+    stroke-width: 2;
+}
+#as1.node circle {
+    fill: #5d77cb;
+}
+#as2.node circle {
+    fill: #9dc5db;
+}
+#as3.node circle {
+    fill: #cde7fb;
+}
+.link.front-as1 {
+    stroke: #666;
+}
+.link.front-as2 {
+    stroke: #999;
+}
+.link.front-as3 {
+    stroke: #ccc;
+}
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+var data = {
+  nodes: [
+    {class: "browser", x: 1, y: 1},
+    {class: "browser", x: 1, y: 2.5},
+    {class: "browser", x: 1, y: 4},
+    {class: "cloud", x: 2, y: 2},
+    {class: "server", id: "frontend", x: 3, y: 2},
+    {class: "server backend", x: 4, y: 1.5},
+    {class: "server backend", x: 4, y: 2.5},
+    {class: "server autoscaled", id: "as1", x: 4, y: 3.5},
+    {class: "server autoscaled", id: "as2", x: 4, y: 4.5},
+    {class: "server autoscaled", id: "as3", x: 4, y: 5.5}
+    ],
+  links: [
+    {source: ".browser", target: ".cloud"},
+    {source: ".cloud", target: "#frontend"},
+    {source: "#frontend", target: ".backend"},
+    {source: "#frontend", target: "#as1", class: "front-as1"},
+    {source: "#frontend", target: "#as2", class: "front-as2"},
+    {source: "#frontend", target: "#as3", class: "front-as3"}
+    ],
+  shapes: [
+      {
+      selector: ".node.server",
+      shape: "dot",
+      opts: {
+        fill: "#2d578b"
+        }
+      },
+      {
+      selector: ".node.browser",
+      shape: "raphael.imac"
+      },
+      {
+      selector: ".node.cloud",
+      shape: "raphael.cloud"
+      },
+      {
+      selector: ".node#as2",
+      shape: "text",
+      opts: {
+        x: 23,
+        y: -20,
+        rotation: -90,
+        width: "20",
+        text: 'Dynamic instances\nwith Auto Scaling'
+        }
+      }
+    ]
+  };
+
+var width = 400,
+   height = 400;
+    
+var canvas = d3.select("body")
+  .append("svg:svg")
+  .attr("width", width)
+  .attr("height", height);
+
+canvas
+  .append("rect")
+  .attr("width", width)
+  .attr("height", height)
+  .attr("fill", "#999")
+  .attr("fill-opacity", "0.5");
+
+var g = d3hg.graph(data);
+canvas
+  .call(g.draw(300, 300))
+  .select('g.graph')
+  .attr("transform", "translate(50,50)")
+  .select("rect")
+  .attr("fill", "#fffffe");
+    </script>
+  </body>
+</html>
