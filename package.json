@@ -1,7 +1,7 @@
 {
   "name": "d3hg",
-  "version": "1.0.0",
-  "description": "Helper for creating handcrafted graphs on top of d3.js.",
+  "version": "0.1.0",
+  "description": "Helper for handcrafting simple graphs using d3.js.",
   "keywords": [
     "visualization",
     "svg"
@@ -22,8 +22,7 @@
     "uglify-js": ">=1.2.3",
     "mocha": "1.0.x",
     "should": "0.6.x",
-    "jsdom": "0.2.12",
-    "sizzle": "1.1.x"
+    "jsdom": "0.2.12"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
